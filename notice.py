@@ -6,6 +6,7 @@ import json
 from whatsapp_api_client_python import API
 import config
 import re
+from response import response
 
 greenAPI = API.GreenAPI(config.ID_WHATSAPP, config.TOKEN_WHATSAPP)
 
@@ -82,8 +83,8 @@ def incoming_message_received(body: dict) -> None:
 
         else:
             # Логика для обработки других сообщений
-            # reply_text = f"Вы написали: {message_text}"
-            # send_message(sender, reply_text)
+            reply_text = response(message_text)
+            send_message(sender, reply_text)
             pass
 
 
